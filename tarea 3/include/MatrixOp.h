@@ -1,5 +1,7 @@
 #ifndef MATRIXOP_H
 #define MATRIXOP_H
+#include <stdexcept>
+
 
 class MatrixOp {
    public:
@@ -27,12 +29,30 @@ class MatrixOp {
     //Ejercicio B1
      MatrixOp operator+(const MatrixOp &other) const;
 
-    // Resta elemento a elemento: devuelve una nueva matriz
+        // Resta elemento a elemento: devuelve una nueva matriz
     MatrixOp operator-(const MatrixOp &other) const;
+
+    const double* data() const { return data_; }
+    int size() const { return rows_ * cols_; }
+
 
    private:
     int rows_, cols_;
     double* data_;
 };
+
+    //Ejercicicio B2
+    template<typename T>
+    T maxValue(const T *arr, int n) {
+    if (n <= 0) throw std::invalid_argument("Array vacío");
+
+    T max = arr[0];
+    for (int i = 1; i < n; ++i) {
+        if (arr[i] > max) {
+            max = arr[i];
+        }
+    }
+    return max;
+}
 
 #endif  // MATRIXOP_H

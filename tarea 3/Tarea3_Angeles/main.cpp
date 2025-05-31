@@ -150,5 +150,11 @@ MatrixOp D_S = A_S - B_S;
 std::cout << "C[0,0] = " << C_S.get(0, 0) << "\n";  
 std::cout << "D[1,1] = " << D_S.get(1, 1) << "\n";  
 
+
+    // Ejercicio B2
+    cout << "\nEjercicio B2: Valor máximo en matriz\n";
+    double maxElem = maxValue<double>(M.data(), M.size());
+    cout << "Máximo elemento de M: " << maxElem << "\n";
+
     return 0;  // Indicar que el programa terminó correctamente
 }
