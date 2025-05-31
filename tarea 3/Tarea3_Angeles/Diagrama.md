@@ -2,29 +2,40 @@
 classDiagram
     class MatrixOpBase {
         <<abstract>>
-        +virtual ~MatrixOpBase()
-        +virtual double determinant() const = 0
+        +~MatrixOpBase()
+        +determinant() const
     }
 
     class MatrixOp {
-        +MatrixOp(int rows, int cols)
+        +MatrixOp(rows, cols)
         +~MatrixOp()
-        +double get(int i, int j) const
-        +void set(int i, int j, double val)
-        +void apply(const MatrixOp* A, const MatrixOp* B, MatrixOp* result, double (*op)(double, double))
-        +void forEachDiagonal(void (MatrixOp::*fn)(int, int)) const
-        +void printAt(int i, int j) const
-        +MatrixOp operator+(const MatrixOp& other) const
-        +MatrixOp operator-(const MatrixOp& other) const
-        +double determinant() const
-        +const double* data() const
-        +int size() const
+        +get(i, j)
+        +set(i, j, val)
+        +apply(A, B, result, op)
+        +forEachDiagonal(fn)
+        +printAt(i, j)
+        +operator+()
+        +operator-()
+        +determinant() const
+        +data() const
+        +size() const
     }
 
     MatrixOpBase <|-- MatrixOp
 
-    %% Relaciones de uso
-    MatrixOp --> "double (*)(double,double)" : usa puntero a función
-    MatrixOp --> "void (MatrixOp::*)(int,int)" : usa puntero a miembro
+    %% Relaciones de uso representadas como clases auxiliares
+    class FunctionPointer {
+        <<utility>>
+        +doubleOp(a, b)
+    }
+
+    class MemberPointer {
+        <<utility>>
+        +memberFn(i, j)
+    }
+
+    MatrixOp --> FunctionPointer : usa función
+    MatrixOp --> MemberPointer : usa miembro
+
 
 ```
