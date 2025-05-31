@@ -88,3 +88,27 @@ void MatrixOp::forEachDiagonal(void (MatrixOp::*fn)(int, int) const) const {
     std::cout << std::endl;
 }
 
+MatrixOp MatrixOp::operator+(const MatrixOp &other) const {
+    if (rows_ != other.rows_ || cols_ != other.cols_) {
+        throw std::invalid_argument("Dimensiones incompatibles");
+    }
+
+    MatrixOp result(rows_, cols_);
+    for (int k = 0; k < rows_ * cols_; ++k) {
+        result.data_[k] = data_[k] + other.data_[k];
+    }
+    return result;
+}
+
+MatrixOp MatrixOp::operator-(const MatrixOp &other) const {
+    if (rows_ != other.rows_ || cols_ != other.cols_) {
+        throw std::invalid_argument("Dimensiones incompatibles");
+    }
+
+    MatrixOp result(rows_, cols_);
+    for (int k = 0; k < rows_ * cols_; ++k) {
+        result.data_[k] = data_[k] - other.data_[k];
+    }
+    return result;
+}
+

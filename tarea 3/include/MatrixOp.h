@@ -24,6 +24,12 @@ class MatrixOp {
 
     void printAt(int i, int j) const;
 
+    //Ejercicio B1
+     MatrixOp operator+(const MatrixOp &other) const;
+
+    // Resta elemento a elemento: devuelve una nueva matriz
+    MatrixOp operator-(const MatrixOp &other) const;
+
    private:
     int rows_, cols_;
     double* data_;

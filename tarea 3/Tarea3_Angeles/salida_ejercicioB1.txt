@@ -1,0 +1,4 @@
+Ejercicio B1: Sobrecarga de operador +.
+C[0,0] = 6
+D[1,1] = -4
+
