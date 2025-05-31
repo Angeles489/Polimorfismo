@@ -2,9 +2,16 @@
 #define MATRIXOP_H
 #include <stdexcept>
 
+// Ejercicio B3
+class IMatrix {
+public:
+    virtual ~IMatrix() = default;
+    virtual double determinant() const = 0;
+};
 
-class MatrixOp {
+class MatrixOp : public IMatrix {
    public:
+   double determinant() const override;
     MatrixOp(int rows, int cols);
     ~MatrixOp();
     void add(const MatrixOp* other, MatrixOp* result) const;

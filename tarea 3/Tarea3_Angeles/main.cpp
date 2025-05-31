@@ -156,5 +156,21 @@ std::cout << "D[1,1] = " << D_S.get(1, 1) << "\n";
     double maxElem = maxValue<double>(M.data(), M.size());
     cout << "Máximo elemento de M: " << maxElem << "\n";
 
+
+    // Ejercicio B3
+    IMatrix *mat = new MatrixOp(2, 2);
+
+    // Convertimos a MatrixOp para poder usar set()
+    MatrixOp *m = dynamic_cast<MatrixOp*>(mat);
+    if (m) {
+        m->set(0, 0, 1);
+        m->set(0, 1, 2);
+        m->set(1, 0, 3);
+        m->set(1, 1, 4);
+    }
+
+    std::cout << "Determinante: " << mat->determinant() << "\n";
+
+    delete mat;
     return 0;  // Indicar que el programa terminó correctamente
 }

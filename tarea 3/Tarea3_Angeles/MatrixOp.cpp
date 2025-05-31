@@ -112,3 +112,15 @@ MatrixOp MatrixOp::operator-(const MatrixOp &other) const {
     return result;
 }
 
+// Ejercicio B3
+double MatrixOp::determinant() const {
+    if (rows_ == 2 && cols_ == 2) {
+        return get(0,0)*get(1,1) - get(0,1)*get(1,0);
+    } else if (rows_ == 3 && cols_ == 3) {
+        return get(0,0)*(get(1,1)*get(2,2) - get(1,2)*get(2,1))
+             - get(0,1)*(get(1,0)*get(2,2) - get(1,2)*get(2,0))
+             + get(0,2)*(get(1,0)*get(2,1) - get(1,1)*get(2,0));
+    } else {
+        throw std::logic_error("Implementar para 2×2 o 3×3");
+    }
+}
