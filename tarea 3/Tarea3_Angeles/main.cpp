@@ -1,7 +1,7 @@
 /**
  * @file main.cpp
  * @brief Punto de entrada del programa.
- * @date YYYY-MM-DD
+ * @date 30-05-2025
  */
 
 #include <iostream>
