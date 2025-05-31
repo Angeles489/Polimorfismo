@@ -18,6 +18,7 @@ double mul(double a, double b) {
     return a * b;
 }
 
+
 int main() {
     cout << "Inicio del programa." << endl;
 
@@ -111,6 +112,18 @@ for (int i = 0; i < D.getRows(); ++i) {
     cout << endl;
 }
 
+// Ejercicio A4
+MatrixOp Diagonal(3, 3);
+
+    // Asignar valores a la matriz (por ejemplo: M(i,j) = i*10 + j)
+    for (int i = 0; i < M.getRows(); ++i) {
+        for (int j = 0; j < M.getCols(); ++j) {
+            M.set(i, j, i * 10 + j);
+        }
+    }
+
+    cout << "Diagonal principal: ";
+    M.forEachDiagonal(&MatrixOp::printAt);
 
     return 0;  // Indicar que el programa terminó correctamente
 }

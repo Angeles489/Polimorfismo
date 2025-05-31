@@ -73,4 +73,18 @@ void MatrixOp::apply(const MatrixOp* A, const MatrixOp* B, MatrixOp* out, OpFunc
     }
 }
 
- 
+ // Ejercicio A4
+ #include <algorithm>  // Para std::min
+
+void MatrixOp::printAt(int i, int j) const {
+    std::cout << get(i, j) << " ";
+}
+
+void MatrixOp::forEachDiagonal(void (MatrixOp::*fn)(int, int) const) const {
+    int n = std::min(rows_, cols_);
+    for (int i = 0; i < n; ++i) {
+        (this->*fn)(i, i);
+    }
+    std::cout << std::endl;
+}
+

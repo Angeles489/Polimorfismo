@@ -19,6 +19,10 @@ class MatrixOp {
     // Ejercicio A3
     void apply(const MatrixOp* A, const MatrixOp* B, MatrixOp* out, OpFunc op) const;
 
+    //Ejercicio A4
+    void forEachDiagonal(void (MatrixOp::*fn)(int, int) const) const;
+
+    void printAt(int i, int j) const;
 
    private:
     int rows_, cols_;
