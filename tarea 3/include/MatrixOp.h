@@ -13,6 +13,13 @@ class MatrixOp {
     int getRows() const;
     int getCols() const;
 
+    // Puntero a funcion A3
+    using OpFunc = double (*)(double, double);
+
+    // Ejercicio A3
+    void apply(const MatrixOp* A, const MatrixOp* B, MatrixOp* out, OpFunc op) const;
+
+
    private:
     int rows_, cols_;
     double* data_;

@@ -1,0 +1,11 @@
+Ejercicio A3: Aplicaci├│n de operaci├│n en matrices.
+
+Matriz C = A - B
+0 1 2
+1 1 1
+2 1 0
+
+Matriz D = A * B
+0 0 0
+0 2 6
+0 6 16

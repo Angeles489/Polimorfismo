@@ -57,3 +57,20 @@ void MatrixOp::add(const MatrixOp* other, MatrixOp* result) const {
         result->data_[k] = this->data_[k] + other->data_[k];
     }
 }
+
+void MatrixOp::apply(const MatrixOp* A, const MatrixOp* B, MatrixOp* out, OpFunc op) const {
+    if (!A || !B || !out) {
+        throw std::invalid_argument("Puntero nulo en apply.");
+    }
+
+    if (A->rows_ != B->rows_ || A->cols_ != B->cols_ ||
+        A->rows_ != out->rows_ || A->cols_ != out->cols_) {
+        throw std::invalid_argument("Dimensiones incompatibles en apply.");
+    }
+
+    for (int k = 0; k < rows_ * cols_; ++k) {
+        out->data_[k] = op(A->data_[k], B->data_[k]);
+    }
+}
+
+ 

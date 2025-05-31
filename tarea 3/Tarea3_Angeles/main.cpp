@@ -10,9 +10,19 @@
 
 using namespace std;
 
+   double sub(double a, double b) {
+    return a - b;
+}
+
+double mul(double a, double b) {
+    return a * b;
+}
+
 int main() {
     cout << "Inicio del programa." << endl;
 
+    // Ejercicio A1
+    cout << "Ejercicio A1: Creacion de una matriz." << endl;
     MatrixOp M(3, 3);
 
     // Mostrar todos los elementos de la matriz
@@ -64,6 +74,43 @@ int main() {
     cout << "Fin del programa." << endl;
 
     // Ejercicio A3
+    cout << "Ejercicio A3: Aplicacion de operacion en matrices." << endl;
+// Definir operaciones
+    // Crear matrices A, B y resultados C y D
+MatrixOp A(3, 3);
+MatrixOp B(3, 3);
+MatrixOp C(3, 3);  // Resultado de A - B
+MatrixOp D(3, 3);  // Resultado de A * B
+
+// Llenar A y B con algunos valores de ejemplo
+for (int i = 0; i < A.getRows(); ++i) {
+    for (int j = 0; j < A.getCols(); ++j) {
+        A.set(i, j, i + j);  // Por ejemplo: A(i,j) = i + j
+        B.set(i, j, i * j);  // Por ejemplo: B(i,j) = i * j
+    }
+}
+
+// Aplicar las operaciones
+A.apply(&A, &B, &C, sub);
+A.apply(&A, &B, &D, mul);
+
+// Imprimir resultados
+cout << "\nMatriz C = A - B\n";
+for (int i = 0; i < C.getRows(); ++i) {
+    for (int j = 0; j < C.getCols(); ++j) {
+        cout << C.get(i, j) << " ";
+    }
+    cout << endl;
+}
+
+cout << "\nMatriz D = A * B\n";
+for (int i = 0; i < D.getRows(); ++i) {
+    for (int j = 0; j < D.getCols(); ++j) {
+        cout << D.get(i, j) << " ";
+    }
+    cout << endl;
+}
+
 
     return 0;  // Indicar que el programa terminó correctamente
 }
