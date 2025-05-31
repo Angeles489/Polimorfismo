@@ -95,11 +95,4 @@ classDiagram
     MatrixOp --> OpFunc : usa puntero a función
     MatrixOp --> MemberPointer : usa puntero a miembro
 
-    %% FUNCIÓN PLANTILLA
-    class maxValue {
-        <<template>>
-        +maxValue<T>(arr: T*, n: int) : T
-    }
-
-    MatrixOp ..> maxValue : usa función plantilla
 ```
