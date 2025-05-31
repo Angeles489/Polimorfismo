@@ -1,0 +1,6 @@
+Inicio del programa.
+0 0 0
+0 0 0
+0 0 0
+Numero de filas: 3
+Numero de columnas: 3
