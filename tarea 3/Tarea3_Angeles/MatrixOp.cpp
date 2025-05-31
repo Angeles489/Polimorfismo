@@ -44,3 +44,16 @@ double MatrixOp::get(int i, int j) const {
 
 int MatrixOp::getRows() const { return rows_; }
 int MatrixOp::getCols() const { return cols_; }
+
+void MatrixOp::add(const MatrixOp* other, MatrixOp* result) const {
+    // Validar dimensiones
+    if (other->rows_ != rows_ || other->cols_ != cols_ ||
+        result->rows_ != rows_ || result->cols_ != cols_) {
+        throw std::invalid_argument("Las dimensiones de las matrices no coinciden.");
+    }
+
+    // Sumar elemento a elemento usando índice lineal
+    for (int k = 0; k < rows_ * cols_; ++k) {
+        result->data_[k] = this->data_[k] + other->data_[k];
+    }
+}

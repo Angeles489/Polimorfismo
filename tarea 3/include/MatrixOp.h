@@ -5,6 +5,7 @@ class MatrixOp {
    public:
     MatrixOp(int rows, int cols);
     ~MatrixOp();
+    void add(const MatrixOp* other, MatrixOp* result) const;
 
     void set(int i, int j, double v);
     double get(int i, int j) const;
