@@ -53,18 +53,6 @@ classDiagram
     MatrixOp --> OpFunc : usa puntero a función
     MatrixOp --> MemberPointer : usa puntero a miembro
 
-    class FunctionPointer {
-        <<utility>>
-        +doubleOp(a, b)
-    }
-
-    class MemberPointer {
-        <<utility>>
-        +memberFn(i, j)
-    }
-
-    MatrixOp --> FunctionPointer : usa función
-    MatrixOp --> MemberPointer : usa miembro
-
-
 ```
+
+
