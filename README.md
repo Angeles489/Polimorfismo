@@ -40,52 +40,65 @@ classDiagram
 
 
 ```
+
 ```mermaid
 classDiagram
+    %% INTERFAZ
     class IMatrix {
-        <<interface>>
+        <<abstract>>
         +~IMatrix()
-        +determinant() const*
+        +determinant() const : double
     }
 
+    %% CLASE PRINCIPAL
     class MatrixOp {
-        +MatrixOp(rows, cols)
+        -int rows_
+        -int cols_
+        -double* data_
+
+        +MatrixOp(int rows, int cols)
         +~MatrixOp()
-        +add(other, result)
-        +set(i, j, v)
-        +get(i, j) const
-        +getRows() const
-        +getCols() const
-        +apply(A, B, out, op) const
-        +forEachDiagonal(fn) const
-        +printAt(i, j) const
-        +operator+()
-        +operator-()
-        +determinant() const
-        +data() const
-        +size() const
+
+        +getRows() const : int
+        +getCols() const : int
+        +set(int i, int j, double v)
+        +get(int i, int j) const : double
+
+        +add(const MatrixOp* other, MatrixOp* result) const
+        +apply(const MatrixOp* A, const MatrixOp* B, MatrixOp* out, OpFunc op) const
+        +forEachDiagonal(void (MatrixOp::*fn)(int, int) const) const
+        +printAt(int i, int j) const
+
+        +operator+(const MatrixOp& other) const : MatrixOp
+        +operator-(const MatrixOp& other) const : MatrixOp
+
+        +determinant() const : double
+
+        +data() const : const double*
+        +size() const : int
     }
 
+    %% HERENCIA
     IMatrix <|-- MatrixOp
 
-    %% Relaciones de uso por punteros
-    class FunctionPointer {
-        <<utility>>
-        +OpFunc: double op(double, double)
+    %% TIPOS DE PUNTEROS
+    class OpFunc {
+        <<typedef>>
+        +double (*)(double, double)
     }
 
     class MemberPointer {
-        <<utility>>
-        +printFn(i, j)
+        <<typedef>>
+        +void (MatrixOp::*)(int, int) const
     }
 
-    MatrixOp --> FunctionPointer : usa puntero a función
+    MatrixOp --> OpFunc : usa puntero a función
     MatrixOp --> MemberPointer : usa puntero a miembro
 
-    %% Función plantilla fuera de clase
+    %% FUNCIÓN PLANTILLA
     class maxValue {
         <<template>>
-        +maxValue<T>(arr, n)
+        +maxValue<T>(arr: T*, n: int) : T
     }
 
     MatrixOp ..> maxValue : usa función plantilla
